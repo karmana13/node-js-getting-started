@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'CSU,Eastbay' });
+    res.render('index', { title: 'Express' });
 });
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -25,12 +25,12 @@ router.get('/mongodb', function (request, response, next) {
         Routes.find({ frequency : { $gte: 0 } }).sort({ name: 1 }).toArray(function (err, docs) {
             if(err) throw err;
 
-            response.render('mongodb', {results: docs});
+            response.render('views/pages/mongodb', {results: docs});
 
         });
 
         //close connection when your app is terminating.
-        database.close(function (err) {
+        myClient.close(function (err) {
             if(err) throw err;
         });
     });//end of connect
