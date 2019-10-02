@@ -8,6 +8,8 @@ var MongoClient = require('mongodb').MongoClient;
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
 });
+module.exports = router;
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
@@ -36,4 +38,4 @@ router.get('/mongodb', function (request, response, next) {
     });//end of connect
 });//end app.get
 
-module.exports = router;
+
