@@ -21,7 +21,7 @@ router.get('/mongodb', function (req, res, next) {
     MongoClient.connect("mongodb://heroku_nb76xh5b:k6hru5kvr4kjco6k6sdps6eg0k@ds229088.mlab.com:29088/heroku_nb76xh5b", function(err, myClient) {
         if(err) throw err;
         //get collection of routes
-        const randomDatabase = myClient.db('heroku_nb76xh5b')
+        const randomDatabase = myClient.db('heroku_nb76xh5b');
         var Routes = randomDatabase.collection('Routes');
         //get all Routes with frequency >=1
         Routes.find({ frequency : { $gte: 0 } }).sort({ name: 1 }).toArray(function (err, docs) {
