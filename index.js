@@ -18,7 +18,7 @@ express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 router.get('/mongodb', function (req, res, next) {
-    MongoClient.connect("mongodb://heroku_nb76xh5b:k6hru5kvr4kjco6k6sdps6eg0k@ds229088.mlab.com:29088/heroku_nb76xh5b", function(err, myClient) {
+    MongoClient.connect("mongodb://karmana:Heroku-karmana1@ds229088.mlab.com:29088/heroku_nb76xh5b", function(err, myClient) {
         if(err) throw err;
         //get collection of routes
         const randomDatabase = myClient.db('heroku_nb76xh5b');
