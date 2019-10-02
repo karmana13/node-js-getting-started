@@ -17,7 +17,7 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-router.get('/mongodb', function (request, response, next) {
+router.get('/mongodb', function (req, res, next) {
     MongoClient.connect("mongodb://heroku_nb76xh5b:k6hru5kvr4kjco6k6sdps6eg0k@ds229088.mlab.com:29088/heroku_nb76xh5b", function(err, myClient) {
         if(err) throw err;
         //get collection of routes
@@ -27,7 +27,7 @@ router.get('/mongodb', function (request, response, next) {
         Routes.find({ frequency : { $gte: 0 } }).sort({ name: 1 }).toArray(function (err, docs) {
             if(err) throw err;
 
-            response.render('pages/mongodb', {results: docs});
+            res.render('pages/mongodb', {results: docs});
 
         });
 
