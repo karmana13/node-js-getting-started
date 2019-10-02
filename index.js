@@ -10,13 +10,6 @@ router.get('/', function(req, res, next) {
 });
 module.exports = router;
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
 router.get('/mongodb', function (req, res, next) {
     MongoClient.connect("mongodb://karmana:Heroku-karmana1@ds229088.mlab.com:29088/heroku_nb76xh5b", function(err, myClient) {
         if(err) throw err;
@@ -38,4 +31,9 @@ router.get('/mongodb', function (req, res, next) {
     });//end of connect
 });//end app.get
 
-
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
