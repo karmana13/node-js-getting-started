@@ -25,7 +25,7 @@ router.get('/mongodb', function (request, response, next) {
         Routes.find({ frequency : { $gte: 0 } }).sort({ name: 1 }).toArray(function (err, docs) {
             if(err) throw err;
 
-            response.render('views/pages/mongodb', {results: docs});
+            response.render('pages/mongodb', {results: docs});
 
         });
 
